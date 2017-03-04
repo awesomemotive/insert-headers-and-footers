@@ -49,15 +49,15 @@ class InsertHeadersAndFooters {
         }
 
 		// Hooks
-		add_action('admin_init', array(&$this, 'registerSettings'));
-        add_action('admin_menu', array(&$this, 'adminPanelsAndMetaBoxes'));
+		add_action( 'admin_init', array(&$this, 'registerSettings' ) );
+        add_action( 'admin_menu', array(&$this, 'adminPanelsAndMetaBoxes' ) );
         add_action( 'wp_feed_options', array( &$this, 'dashBoardRss' ), 10, 2 );
         add_action( 'admin_notices', array( &$this, 'dashboardNotices' ) );
         add_action( 'wp_ajax_' . $this->plugin->name . '_dismiss_dashboard_notices', array( &$this, 'dismissDashboardNotices' ) );
 
         // Frontend Hooks
-        add_action('wp_head', array(&$this, 'frontendHeader'));
-		add_action('wp_footer', array(&$this, 'frontendFooter'));
+        add_action( 'wp_head', array( &$this, 'frontendHeader' ) );
+		add_action( 'wp_footer', array( &$this, 'frontendFooter' ) );
 
 		// Filters
 		add_filter( 'dashboard_secondary_items', array( &$this, 'dashboardSecondaryItems' ) );
@@ -123,15 +123,15 @@ class InsertHeadersAndFooters {
 	* Register Settings
 	*/
 	function registerSettings() {
-		register_setting($this->plugin->name, 'ihaf_insert_header', 'trim');
-		register_setting($this->plugin->name, 'ihaf_insert_footer', 'trim');
+		register_setting( $this->plugin->name, 'ihaf_insert_header', 'trim' );
+		register_setting( $this->plugin->name, 'ihaf_insert_footer', 'trim' );
 	}
 
 	/**
     * Register the plugin settings panel
     */
     function adminPanelsAndMetaBoxes() {
-    	add_submenu_page('options-general.php', $this->plugin->displayName, $this->plugin->displayName, 'manage_options', $this->plugin->name, array(&$this, 'adminPanel'));
+    	add_submenu_page( 'options-general.php', $this->plugin->displayName, $this->plugin->displayName, 'manage_options', $this->plugin->name, array( &$this, 'adminPanel' ) );
 	}
 
     /**
@@ -140,31 +140,31 @@ class InsertHeadersAndFooters {
     */
     function adminPanel() {
     	// Save Settings
-        if (isset($_POST['submit'])) {
+        if ( isset( $_POST['submit'] ) ) {
         	// Check nonce
         	if (!isset($_POST[$this->plugin->name.'_nonce'])) {
 	        	// Missing nonce
-	        	$this->errorMessage = __('nonce field is missing. Settings NOT saved.', $this->plugin->name);
-        	} elseif (!wp_verify_nonce($_POST[$this->plugin->name.'_nonce'], $this->plugin->name)) {
+	        	$this->errorMessage = __( 'nonce field is missing. Settings NOT saved.', $this->plugin->name );
+        	} elseif ( !wp_verify_nonce( $_POST[$this->plugin->name.'_nonce'], $this->plugin->name ) ) {
 	        	// Invalid nonce
-	        	$this->errorMessage = __('Invalid nonce specified. Settings NOT saved.', $this->plugin->name);
+	        	$this->errorMessage = __( 'Invalid nonce specified. Settings NOT saved.', $this->plugin->name );
         	} else {
 	        	// Save
-	    		update_option('ihaf_insert_header', $_POST['ihaf_insert_header']);
-	    		update_option('ihaf_insert_footer', $_POST['ihaf_insert_footer']);
+	    		update_option( 'ihaf_insert_header', $_POST['ihaf_insert_header'] );
+	    		update_option( 'ihaf_insert_footer', $_POST['ihaf_insert_footer'] );
 	    		update_option( $this->plugin->db_welcome_dismissed_key, 1 );
-				$this->message = __('Settings Saved.', $this->plugin->name);
+				$this->message = __( 'Settings Saved.', $this->plugin->name );
 			}
         }
 
         // Get latest settings
         $this->settings = array(
-        	'ihaf_insert_header' => stripslashes(get_option('ihaf_insert_header')),
-        	'ihaf_insert_footer' => stripslashes(get_option('ihaf_insert_footer')),
+        	'ihaf_insert_header' => stripslashes( get_option( 'ihaf_insert_header' ) ),
+        	'ihaf_insert_footer' => stripslashes( get_option( 'ihaf_insert_footer' ) ),
         );
 
     	// Load Settings Form
-        include_once(WP_PLUGIN_DIR.'/'.$this->plugin->name.'/views/settings.php');
+        include_once( WP_PLUGIN_DIR . '/' . $this->plugin->name . '/views/settings.php' );
     }
 
     /**
@@ -178,14 +178,14 @@ class InsertHeadersAndFooters {
 	* Outputs script / CSS to the frontend header
 	*/
 	function frontendHeader() {
-		$this->output('ihaf_insert_header');
+		$this->output( 'ihaf_insert_header' );
 	}
 
 	/**
 	* Outputs script / CSS to the frontend footer
 	*/
 	function frontendFooter() {
-		$this->output('ihaf_insert_footer');
+		$this->output( 'ihaf_insert_footer' );
 	}
 
 	/**
@@ -194,23 +194,23 @@ class InsertHeadersAndFooters {
 	* @param string $setting Setting Name
 	* @return output
 	*/
-	function output($setting) {
+	function output( $setting ) {
 		// Ignore admin, feed, robots or trackbacks
-		if (is_admin() OR is_feed() OR is_robots() OR is_trackback()) {
+		if ( is_admin() || is_feed() || is_robots() || is_trackback() ) {
 			return;
 		}
 
 		// Get meta
-		$meta = get_option($setting);
-		if (empty($meta)) {
+		$meta = get_option( $setting );
+		if ( empty( $meta ) ) {
 			return;
 		}
-		if (trim($meta) == '') {
+		if ( trim( $meta ) == '' ) {
 			return;
 		}
 
 		// Output
-		echo stripslashes($meta);
+		echo stripslashes( $meta );
 	}
 }
 
