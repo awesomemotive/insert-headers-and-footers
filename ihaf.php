@@ -41,6 +41,7 @@ class InsertHeadersAndFooters {
         $this->plugin->version      = '1.3.3';
         $this->plugin->folder       = plugin_dir_path( __FILE__ );
         $this->plugin->url          = plugin_dir_url( __FILE__ );
+        $this->plugin->db_welcome_dismissed_key = $this->plugin->name . '_welcome_dismissed_key2e';
 
         // Check if the global wpb_feed_append variable exists. If not, set it.
         if ( ! array_key_exists( 'wpb_feed_append', $GLOBALS ) ) {
@@ -51,6 +52,8 @@ class InsertHeadersAndFooters {
 		add_action('admin_init', array(&$this, 'registerSettings'));
         add_action('admin_menu', array(&$this, 'adminPanelsAndMetaBoxes'));
         add_action( 'wp_feed_options', array( &$this, 'dashBoardRss' ), 10, 2 );
+        add_action( 'admin_notices', array( &$this, 'dashboardNotices' ) );
+        add_action( 'wp_ajax_' . $this->plugin->name . '_dismiss_dashboard_notices', array( &$this, 'dismissDashboardNotices' ) );
 
         // Frontend Hooks
         add_action('wp_head', array(&$this, 'frontendHeader'));
@@ -90,6 +93,32 @@ class InsertHeadersAndFooters {
         }
     }
 
+    /**
+     * Show relevant notices for the plugin
+     */
+    function dashboardNotices() {
+        global $pagenow;
+
+        //$create_ad_page = '';
+        if ( empty( get_option( $this->plugin->db_welcome_dismissed_key ) ) ) {
+        	if ( ! ( $pagenow == 'options-general.php' && isset( $_GET['page'] ) && $_GET['page'] == 'insert-headers-and-footers' ) ) {
+	            $setting_page = admin_url( 'options-general.php?page=' . $this->plugin->name );
+	            // load the notices view
+	            include_once( WP_PLUGIN_DIR.'/'.$this->plugin->name.'/views/dashboard-notices.php' );
+        	}
+        }
+    }
+
+    /**
+     * Dismiss the welcome notice for the plugin
+     */
+    function dismissDashboardNotices() {
+    	check_ajax_referer( $this->plugin->name . '-nonce', 'nonce' );
+        // user has dismissed the welcome notice
+        update_option( $this->plugin->db_welcome_dismissed_key, 1 );
+        exit;
+    }
+
 	/**
 	* Register Settings
 	*/
@@ -123,6 +152,7 @@ class InsertHeadersAndFooters {
 	        	// Save
 	    		update_option('ihaf_insert_header', $_POST['ihaf_insert_header']);
 	    		update_option('ihaf_insert_footer', $_POST['ihaf_insert_footer']);
+	    		update_option( $this->plugin->db_welcome_dismissed_key, 1 );
 				$this->message = __('Settings Saved.', $this->plugin->name);
 			}
         }
