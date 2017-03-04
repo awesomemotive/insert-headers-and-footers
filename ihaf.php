@@ -42,14 +42,53 @@ class InsertHeadersAndFooters {
         $this->plugin->folder       = plugin_dir_path( __FILE__ );
         $this->plugin->url          = plugin_dir_url( __FILE__ );
 
+        // Check if the global wpb_feed_append variable exists. If not, set it.
+        if ( ! array_key_exists( 'wpb_feed_append', $GLOBALS ) ) {
+              $GLOBALS['wpb_feed_append'] = false;
+        }
+
 		// Hooks
 		add_action('admin_init', array(&$this, 'registerSettings'));
         add_action('admin_menu', array(&$this, 'adminPanelsAndMetaBoxes'));
+        add_action( 'wp_feed_options', array( &$this, 'dashBoardRss' ), 10, 2 );
 
         // Frontend Hooks
         add_action('wp_head', array(&$this, 'frontendHeader'));
 		add_action('wp_footer', array(&$this, 'frontendFooter'));
+
+		// Filters
+		add_filter( 'dashboard_secondary_items', array( &$this, 'dashboardSecondaryItems' ) );
 	}
+
+    /**
+     * Number of Secondary feed items to show
+     */
+	function dashboardSecondaryItems() {
+		return 6;
+	}
+
+    /**
+     * Update the planet feed to add the WPB feed
+     */
+    function dashboardRss( $feed, $url ) {
+        // Return early if not on the right page.
+        global $pagenow;
+        if ( 'admin-ajax.php' !== $pagenow ) {
+            return;
+        }
+
+        // Return early if not on the right feed.
+        if ( strpos( $url, 'planet.wordpress.org' ) === false ) {
+            return;
+        }
+
+        // Only move forward if this action hasn't been done already.
+        if ( ! $GLOBALS['wpb_feed_append'] ) {
+            $GLOBALS['wpb_feed_append'] = true;
+            $urls = array( 'http://www.wpbeginner.com/feed/', $url );
+            $feed->set_feed_url( $urls );
+        }
+    }
 
 	/**
 	* Register Settings
