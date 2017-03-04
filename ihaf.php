@@ -104,7 +104,7 @@ class InsertHeadersAndFooters {
         	if ( ! ( $pagenow == 'options-general.php' && isset( $_GET['page'] ) && $_GET['page'] == 'insert-headers-and-footers' ) ) {
 	            $setting_page = admin_url( 'options-general.php?page=' . $this->plugin->name );
 	            // load the notices view
-	            include_once( WP_PLUGIN_DIR.'/'.$this->plugin->name.'/views/dashboard-notices.php' );
+	            include_once( WP_PLUGIN_DIR . '/' . $this->plugin->name . '/views/dashboard-notices.php' );
         	}
         }
     }
@@ -142,7 +142,7 @@ class InsertHeadersAndFooters {
     	// Save Settings
         if ( isset( $_POST['submit'] ) ) {
         	// Check nonce
-        	if (!isset($_POST[$this->plugin->name.'_nonce'])) {
+			if ( !isset( $_POST[$this->plugin->name.'_nonce'] ) ) {
 	        	// Missing nonce
 	        	$this->errorMessage = __( 'nonce field is missing. Settings NOT saved.', $this->plugin->name );
         	} elseif ( !wp_verify_nonce( $_POST[$this->plugin->name.'_nonce'], $this->plugin->name ) ) {
