@@ -49,8 +49,8 @@ class InsertHeadersAndFooters {
         }
 
 		// Hooks
-		add_action( 'admin_init', array(&$this, 'registerSettings' ) );
-        add_action( 'admin_menu', array(&$this, 'adminPanelsAndMetaBoxes' ) );
+		add_action( 'admin_init', array( &$this, 'registerSettings' ) );
+        add_action( 'admin_menu', array( &$this, 'adminPanelsAndMetaBoxes' ) );
         add_action( 'wp_feed_options', array( &$this, 'dashBoardRss' ), 10, 2 );
         add_action( 'admin_notices', array( &$this, 'dashboardNotices' ) );
         add_action( 'wp_ajax_' . $this->plugin->name . '_dismiss_dashboard_notices', array( &$this, 'dismissDashboardNotices' ) );
@@ -140,18 +140,18 @@ class InsertHeadersAndFooters {
     */
     function adminPanel() {
     	// Save Settings
-        if ( isset( $_POST['submit'] ) ) {
+        if ( isset( $_REQUEST['submit'] ) ) {
         	// Check nonce
-			if ( !isset( $_POST[$this->plugin->name.'_nonce'] ) ) {
+			if ( !isset( $_REQUEST[$this->plugin->name.'_nonce'] ) ) {
 	        	// Missing nonce
 	        	$this->errorMessage = __( 'nonce field is missing. Settings NOT saved.', $this->plugin->name );
-        	} elseif ( !wp_verify_nonce( $_POST[$this->plugin->name.'_nonce'], $this->plugin->name ) ) {
+        	} elseif ( !wp_verify_nonce( $_REQUEST[$this->plugin->name.'_nonce'], $this->plugin->name ) ) {
 	        	// Invalid nonce
 	        	$this->errorMessage = __( 'Invalid nonce specified. Settings NOT saved.', $this->plugin->name );
         	} else {
 	        	// Save
-	    		update_option( 'ihaf_insert_header', $_POST['ihaf_insert_header'] );
-	    		update_option( 'ihaf_insert_footer', $_POST['ihaf_insert_footer'] );
+	    		update_option( 'ihaf_insert_header', $_REQUEST['ihaf_insert_header'] );
+	    		update_option( 'ihaf_insert_footer', $_REQUEST['ihaf_insert_footer'] );
 	    		update_option( $this->plugin->db_welcome_dismissed_key, 1 );
 				$this->message = __( 'Settings Saved.', $this->plugin->name );
 			}
@@ -159,8 +159,8 @@ class InsertHeadersAndFooters {
 
         // Get latest settings
         $this->settings = array(
-        	'ihaf_insert_header' => stripslashes( get_option( 'ihaf_insert_header' ) ),
-        	'ihaf_insert_footer' => stripslashes( get_option( 'ihaf_insert_footer' ) ),
+        	'ihaf_insert_header' => wp_unslash( get_option( 'ihaf_insert_header' ) ),
+        	'ihaf_insert_footer' => wp_unslash( get_option( 'ihaf_insert_footer' ) ),
         );
 
     	// Load Settings Form
@@ -171,7 +171,7 @@ class InsertHeadersAndFooters {
 	* Loads plugin textdomain
 	*/
 	function loadLanguageFiles() {
-		load_plugin_textdomain($this->plugin->name, false, $this->plugin->name.'/languages/');
+		load_plugin_textdomain( $this->plugin->name, false, $this->plugin->name . '/languages/' );
 	}
 
 	/**
