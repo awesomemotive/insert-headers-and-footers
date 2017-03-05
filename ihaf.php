@@ -159,8 +159,8 @@ class InsertHeadersAndFooters {
 
         // Get latest settings
         $this->settings = array(
-        	'ihaf_insert_header' => wp_unslash( get_option( 'ihaf_insert_header' ) ),
-        	'ihaf_insert_footer' => wp_unslash( get_option( 'ihaf_insert_footer' ) ),
+			'ihaf_insert_header' => esc_html( wp_unslash( get_option( 'ihaf_insert_header' ) ) ),
+			'ihaf_insert_footer' => esc_html( wp_unslash( get_option( 'ihaf_insert_footer' ) ) ),
         );
 
     	// Load Settings Form
@@ -210,7 +210,7 @@ class InsertHeadersAndFooters {
 		}
 
 		// Output
-		echo stripslashes( $meta );
+		echo wp_unslash( $meta );
 	}
 }
 
