@@ -49,7 +49,7 @@
 
     		<!-- Sidebar -->
     		<div id="postbox-container-1" class="postbox-container">
-    			<?php require_once( $this->plugin->folder . '/views/sidebar-donate.php' ); ?>
+    			<?php require_once( $this->plugin->folder . '/views/sidebar.php' ); ?>
     		</div>
     		<!-- /postbox-container -->
     	</div>
