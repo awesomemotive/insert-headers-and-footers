@@ -139,6 +139,12 @@ class InsertHeadersAndFooters {
     * Save POSTed data from the Administration Panel into a WordPress option
     */
     function adminPanel() {
+		// only admin user can access this page
+		if ( !current_user_can( 'administrator' ) ) {
+			echo '<p>' . __( 'Sorry, you are not allowed to access this page.', $this->plugin->name ) . '</p>';
+			return;
+		}
+
     	// Save Settings
         if ( isset( $_REQUEST['submit'] ) ) {
         	// Check nonce
