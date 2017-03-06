@@ -156,6 +156,8 @@ class InsertHeadersAndFooters {
 	        	$this->errorMessage = __( 'Invalid nonce specified. Settings NOT saved.', $this->plugin->name );
         	} else {
 	        	// Save
+				// $_REQUEST has already been slashed by wp_magic_quotes in wp-settings
+				// so do nothing before saving
 	    		update_option( 'ihaf_insert_header', $_REQUEST['ihaf_insert_header'] );
 	    		update_option( 'ihaf_insert_footer', $_REQUEST['ihaf_insert_footer'] );
 	    		update_option( $this->plugin->db_welcome_dismissed_key, 1 );
