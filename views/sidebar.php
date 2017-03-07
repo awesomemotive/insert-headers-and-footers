@@ -11,7 +11,8 @@
 
     <div class="inside">
         <p>
-            <?php _e( 'Want to take your site to the next level? Check out our daily free WordPress tutorials on WPBeginner blog.', $this->plugin->name ); ?>
+            <?php _e( 'Want to take your site to the next level? Check out our daily free WordPress tutorials on ', $this->plugin->name ); ?>
+            <a href="http://www.wpbeginner.com/?utm_source=wpadmin&utm_campaign=freeplugins"><?php _e( 'WPBeginner blog.' ); ?></a>
         </p>
 
         <p>
@@ -19,14 +20,14 @@
         </p>
 
         <ul>
-           <li><a href="http://www.wpbeginner.com/wordpress-performance-speed/" target="_blank">
+           <li><a href="http://www.wpbeginner.com/wordpress-performance-speed/?utm_source=wpadmin&utm_campaign=freeplugins" target="_blank">
               <?php _e( 'Speed Up WordPress', $this->plugin->name ); ?>
            </a></li>
-            <li><a href="http://www.wpbeginner.com/wordpress-security/" target="_blank">
+            <li><a href="http://www.wpbeginner.com/wordpress-security/?utm_source=wpadmin&utm_campaign=freeplugins" target="_blank">
                 <?php _e( 'Improve WordPress Security', $this->plugin->name ); ?>
             </a></li>
 
-            <li><a href="http://www.wpbeginner.com/wordpress-seo/" target="_blank">
+            <li><a href="http://www.wpbeginner.com/wordpress-seo/?utm_source=wpadmin&utm_campaign=freeplugins" target="_blank">
                 <?php _e( 'Boost Your WordPress SEO', $this->plugin->name ); ?>
             </a></li>
         </ul>

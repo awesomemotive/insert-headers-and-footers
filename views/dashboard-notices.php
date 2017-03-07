@@ -4,7 +4,7 @@
  */
 ?>
 <div class="notice notice-success is-dismissible <?= $this->plugin->name ?>-notice-welcome">
-	<p>Thank you for installing <?= $this->plugin->displayName ?>! <a href="<?= $create_ad_page ?>">Click here</a> to configure the plugin.</p>
+	<p>Thank you for installing <?= $this->plugin->displayName ?>! <a href="<?= $setting_page ?>">Click here</a> to configure the plugin.</p>
 </div>
 <script type="text/javascript">
 	jQuery(document).ready( function($) {
