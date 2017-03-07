@@ -41,7 +41,7 @@ class InsertHeadersAndFooters {
         $this->plugin->version      = '1.3.3';
         $this->plugin->folder       = plugin_dir_path( __FILE__ );
         $this->plugin->url          = plugin_dir_url( __FILE__ );
-        $this->plugin->db_welcome_dismissed_key = $this->plugin->name . '_welcome_dismissed_key2e';
+        $this->plugin->db_welcome_dismissed_key = $this->plugin->name . '_welcome_dismissed_key';
 
         // Check if the global wpb_feed_append variable exists. If not, set it.
         if ( ! array_key_exists( 'wpb_feed_append', $GLOBALS ) ) {
