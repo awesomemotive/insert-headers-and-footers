@@ -12,7 +12,7 @@
     <div class="inside">
         <p>
             <?php _e( 'Want to take your site to the next level? Check out our daily free WordPress tutorials on ', $this->plugin->name ); ?>
-            <a href="http://www.wpbeginner.com/?utm_source=wpadmin&utm_campaign=freeplugins"><?php _e( 'WPBeginner blog.' ); ?></a>
+            <a href="http://www.wpbeginner.com/?utm_source=wpadmin&utm_campaign=freeplugins"><?php _e( 'WPBeginner blog' ); ?></a>.
         </p>
 
         <p>
