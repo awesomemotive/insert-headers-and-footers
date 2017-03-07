@@ -1,8 +1,8 @@
 === Insert Headers and Footers ===
-Contributors: WPbeginner, iamdpegg, smub, n7studios
-Tags: header, footer, headers, footers, content, wpmu, meta, meta tags, scripts, js, css, google analytics
+Contributors: WPbeginner, smub
+Tags: code, content, css, footer, footer code, footer scripts, footers, google analytics, head, header, header code, header scripts, headers, insert, insert code, insert scripts, js, meta, meta tags, scripts, wpmu
 Requires at least: 3.6
-Tested up to: 4.3
+Tested up to: 4.7.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -11,28 +11,69 @@ This plugin allows you to add extra scripts to the header and footer of your blo
 
 == Description ==
 
-Insert Headers and Footers is a simple plugin that lets you add scripts like Google Analytics to your WordPress site without having to get your hands dirty in code. Moreover, the simple interface gives you one place where you can add all of you scripts rather than dealing with dozens of plugins.
+= Easily Insert Header and Footer Code =
 
-If you enjoy using this plugin and want to learn more about how to use WordPress then I would suggest visiting [WPBeginner](http://www.wpbeginner.com "WPBeginner"). It's one of the largest free WordPress resource sites in the world and has tons of [WordPress tutorials](http://www.wpbeginner.com/category/wp-tutorials/ "WordPress tutorials") that will explain everything you need to know about setting up and using WordPress. 
+Insert Headers and Footers is a simple plugin that lets you insert code like Google Analytics to your WordPress site header and footer. No need to edit your theme files!
 
-On the site you will also find [free WordPress video tutorials](http://videos.wpbeginner.com "Checkout out WPBeginner's WordPress tutorial videos"), and numerous other guides such as [how to choose the best WordPress hosting](http://www.wpbeginner.com/wordpress-hosting/ "How to Choose the Best WordPress Web Hosting"), [how to install WordPress](http://www.wpbeginner.com/how-to-install-wordpress/ "How to install WordPress") and many more.
+The simple interface of the Insert Headers and Footers plugin gives you one place where you can insert scripts, rather than dealing with dozens of different plugins.
 
-People often ask me what are the [best WordPress plugins](http://www.wpbeginner.com/category/plugins/ "best WordPress plugins")? How do I decide which plugins I should use on my site? Are there any must have plugins? To answer all these questions I created a blueprint of WPBeginner that shows exactly what I use to run the site. [Take a look at plugins I'm using at WPBeginner](http://www.wpbeginner.com/blueprint/ "Take a look at plugins I'm using at WPBeginner")
+= Features of Insert Headers and Footers =
 
-Note for Beginners: Like all plugins available for download, Insert Headers And Footers is only available for self-hosted WordPress sites. This means you will need to [switch from WordPress.com to WordPress.org](http://www.wpbeginner.com/wp-tutorials/how-to-properly-move-your-blog-from-wordpress-com-to-wordpress-org/ "switch from WordPress.com to WordPress.org") if you want to use this plugin on your WordPress site. For more details, see my infographic on [Self hosted WordPress.org vs Free WordPress.com](http://www.wpbeginner.com/beginners-guide/self-hosted-wordpress-org-vs-free-wordpress-com-infograph/ "Self Hosted WordPress.org vs free WordPress.com")
+* Quick to set up
+* Simple to insert scripts
+* Insert header code and/or footer code
+* Add Google Analytics code to any theme
+* Insert any code or script, including HTML and Javascript
 
-If you like using this plugin, then please leave us a good rating. If you have support questions just ask them here in the support forum.
+= Credits =
 
-Lastly, if you like this plugin then follow WPBeginner on:
-[Twitter](http://twitter.com/wpbeginner "Twitter")
-[Facebook](http://facebook.com/wpbeginner "Facebook")
-[Google+](https://plus.google.com/101634180904808003404/ "Google+")
+This plugin is created by <a href="https://syedbalkhi.com/" rel="friend" title="Syed Balkhi">Syed Balkhi</a> and the <a href="http://www.wpbeginner.com/" rel="friend" title="WPBeginner">WPBeginner</a> team.
+
+= What's Next =
+
+If you find this plugin useful to insert header and footer scripts, please leave a good rating and consider checking out our other projects:
+
+* <a href="http://optinmonster.com/" rel="friend" title="OptinMonster">OptinMonster</a> - Get More Email Subscribers
+* <a href="http://wpforms.com/" rel="friend" title="WPForms">WPForms</a> - Best Contact Form Builder Plugin
+* <a href="http://soliloquywp.com/" rel="friend" title="Soliloquy">Soliloquy</a> - Best WordPress Slider Plugin
+* <a href="http://enviragallery.com/" rel="friend" title="Envira Gallery">Envira Gallery</a> - Best WordPress Gallery Plugin
+* <a href="http://monsterinsights.com/" rel="friend" title="MonsterInsights">MonsterInsights</a> - Best Google Analytics Plugin
+
+To learn more about WordPress, you can also visit <a href="http://www.wpbeginner.com/" rel="friend" title="WPBeginner">WPBeginner</a> for tutorials on topics like:
+
+* <a href="http://www.wpbeginner.com/wordpress-performance-speed/" rel="friend" title="Ultimate Guide to WordPress Speed and Performance">WordPress Speed and Performance</a>
+* <a href="http://www.wpbeginner.com/wordpress-security/" rel="friend" title="Ultimate WordPress Security Guide">WordPress Security</a>
+* <a href="http://www.wpbeginner.com/wordpress-seo/" rel="friend" title="Ultimate WordPress SEO Guide for Beginners">WordPress Security</a>WordPress SEO</a>
+
+...and many more <a href="http://www.wpbeginner.com/category/wp-tutorials/" rel="friend" title="WordPress Tutorials">WordPress tutorials</a>.
 
 == Installation ==
 
-1. Upload `insert-headers-and-footers` directory to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Configure plugin (go to the Settings/Insert Headers and Footers)
+1. Install Insert Headers and Footers by uploading the `insert-headers-and-footers` directory to the `/wp-content/plugins/` directory. (See instructions on <a href="http://www.wpbeginner.com/beginners-guide/step-by-step-guide-to-install-a-wordpress-plugin-for-beginners/" rel="friend">how to install a WordPress plugin</a>.)
+2. Activate Insert Headers and Footers through the `Plugins` menu in WordPress.
+3. Insert code in your header or footer by going to the `Settings > Insert Headers and Footers` menu.
+
+[youtube https://www.youtube.com/watch?v=AXM1QgMODW0]
+
+== Screenshots ==
+
+1. Settings Screen
+
+== Frequently Asked Questions ==
+
+= Can I use Insert Headers and Footers to install Google Analytics? =
+
+Yes, you can insert your Google Analytics code in the `Scripts in Header` field.
+
+== Notes ==
+Insert Headers and Footers is the easiest way to insert code in your WordPress headers and footers.
+
+Our goal is to make using WordPress easy, both with our <a href="http://www.wpbeginner.com/wordpress-plugins/" rel="friend" title="WordPress Plugins">WordPress plugins</a> and resources like <a href="http://www.wpbeginner.com/" rel="friend">WPBeginner</a>, the largest WordPress resource site for beginners.
+
+I feel that we have done that here. I hope find Insert Headers and Footers useful to insert scripts on your site.
+
+Thank you
+Syed Balkhi
 
 == Changelog ==
 
@@ -60,6 +101,3 @@ Lastly, if you like this plugin then follow WPBeginner on:
 
 = 1.0 =
 * Initial version
-
-
-
