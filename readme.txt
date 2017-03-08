@@ -1,5 +1,5 @@
 === Insert Headers and Footers ===
-Contributors: WPbeginner, smub
+Contributors: WPbeginner, smub, deb255
 Tags: code, content, css, footer, footer code, footer scripts, footers, google analytics, head, header, header code, header scripts, headers, insert, insert code, insert scripts, js, meta, meta tags, scripts, wpmu
 Requires at least: 3.6
 Tested up to: 4.7.2
@@ -43,7 +43,7 @@ To learn more about WordPress, you can also visit <a href="http://www.wpbeginner
 
 * <a href="http://www.wpbeginner.com/wordpress-performance-speed/" rel="friend" title="Ultimate Guide to WordPress Speed and Performance">WordPress Speed and Performance</a>
 * <a href="http://www.wpbeginner.com/wordpress-security/" rel="friend" title="Ultimate WordPress Security Guide">WordPress Security</a>
-* <a href="http://www.wpbeginner.com/wordpress-seo/" rel="friend" title="Ultimate WordPress SEO Guide for Beginners">WordPress Security</a>WordPress SEO</a>
+* <a href="http://www.wpbeginner.com/wordpress-seo/" rel="friend" title="Ultimate WordPress SEO Guide for Beginners">WordPress SEO</a>
 
 ...and many more <a href="http://www.wpbeginner.com/category/wp-tutorials/" rel="friend" title="WordPress Tutorials">WordPress tutorials</a>.
 
@@ -76,6 +76,10 @@ Thank you
 Syed Balkhi
 
 == Changelog ==
+
+= 1.4 =
+* Tested with WordPress 4.7.2
+* cleaned up code
 
 = 1.3.3 =
 * Tested with WordPress 4.3

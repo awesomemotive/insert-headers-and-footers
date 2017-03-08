@@ -2,7 +2,7 @@
 /**
 * Plugin Name: Insert Headers and Footers
 * Plugin URI: http://www.wpbeginner.com/
-* Version: 1.3.3
+* Version: 1.4.1
 * Author: WPBeginner
 * Author URI: http://www.wpbeginner.com/
 * Description: Allows you to insert code or text in the header or footer of your WordPress blog
@@ -38,7 +38,7 @@ class InsertHeadersAndFooters {
         $this->plugin               = new stdClass;
         $this->plugin->name         = 'insert-headers-and-footers'; // Plugin Folder
         $this->plugin->displayName  = 'Insert Headers and Footers'; // Plugin Name
-        $this->plugin->version      = '1.3.3';
+        $this->plugin->version      = '1.4.1';
         $this->plugin->folder       = plugin_dir_path( __FILE__ );
         $this->plugin->url          = plugin_dir_url( __FILE__ );
         $this->plugin->db_welcome_dismissed_key = $this->plugin->name . '_welcome_dismissed_key';
@@ -99,11 +99,11 @@ class InsertHeadersAndFooters {
     function dashboardNotices() {
         global $pagenow;
 
-        if ( empty( get_option( $this->plugin->db_welcome_dismissed_key ) ) ) {
+        if ( !get_option( $this->plugin->db_welcome_dismissed_key ) ) {
         	if ( ! ( $pagenow == 'options-general.php' && isset( $_GET['page'] ) && $_GET['page'] == 'insert-headers-and-footers' ) ) {
 	            $setting_page = admin_url( 'options-general.php?page=' . $this->plugin->name );
 	            // load the notices view
-	            include_once( WP_PLUGIN_DIR . '/' . $this->plugin->name . '/views/dashboard-notices.php' );
+                include_once( $this->plugin->folder . '/views/dashboard-notices.php' );
         	}
         }
     }
