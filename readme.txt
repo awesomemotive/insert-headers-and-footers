@@ -77,6 +77,9 @@ Syed Balkhi
 
 == Changelog ==
 
+= 1.4.1 =
+* Fixes for users running PHP version less than 5.5
+
 = 1.4 =
 * Tested with WordPress 4.7.2
 * cleaned up code
