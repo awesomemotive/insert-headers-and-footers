@@ -77,6 +77,9 @@ Syed Balkhi
 
 == Changelog ==
 
+= 1.4.2 =
+* Code cleanups
+
 = 1.4.1 =
 * Fixes for users running PHP version less than 5.5
 
