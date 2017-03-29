@@ -222,4 +222,3 @@ class InsertHeadersAndFooters {
 }
 
 $ihaf = new InsertHeadersAndFooters();
-?>

@@ -3,7 +3,7 @@ Contributors: WPbeginner, smub, deb255
 Tags: code, content, css, footer, footer code, footer scripts, footers, google analytics, head, header, header code, header scripts, headers, insert, insert code, insert scripts, js, meta, meta tags, scripts, wpmu
 Requires at least: 3.6
 Tested up to: 4.7.3
-Stable tag: trunk
+Stable tag: 1.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
