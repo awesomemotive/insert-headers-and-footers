@@ -51,22 +51,10 @@
             <?php _e( ' - Drag & Drop WordPress Form Builder', $this->plugin->name ); ?>
         </p>
         <p>
-            <a href="https://wordpress.org/plugins/envira-gallery-lite/" target="_blank">
-                <?php _e( 'Envira Gallery', $this->plugin->name ); ?>
-            </a>
-            <?php _e( ' - Responsive WordPress Gallery plugin', $this->plugin->name ); ?>
-        </p>
-        <p>
             <a href="https://wordpress.org/plugins/google-analytics-for-wordpress/" target="_blank">
                 <?php _e( 'MonsterInsights', $this->plugin->name ); ?>
             </a>
             <?php _e( ' - Google Analytics Made Easy for WordPress', $this->plugin->name ); ?>
-        </p>
-        <p>
-            <a href="https://wordpress.org/plugins/soliloquy-lite/" target="_blank">
-                <?php _e( 'Soliloquy', $this->plugin->name ); ?>
-            </a>
-            <?php _e( ' - Responsive WordPress Slider Plugin', $this->plugin->name ); ?>
         </p>
         <p>
             <a href="http://optinmonster.com/" target="_blank">

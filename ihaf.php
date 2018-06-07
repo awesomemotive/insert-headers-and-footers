@@ -2,7 +2,7 @@
 /**
 * Plugin Name: Insert Headers and Footers
 * Plugin URI: http://www.wpbeginner.com/
-* Version: 1.4.2
+* Version: 1.4.3
 * Author: WPBeginner
 * Author URI: http://www.wpbeginner.com/
 * Description: Allows you to insert code or text in the header or footer of your WordPress blog
@@ -204,6 +204,21 @@ class InsertHeadersAndFooters {
 	function output( $setting ) {
 		// Ignore admin, feed, robots or trackbacks
 		if ( is_admin() || is_feed() || is_robots() || is_trackback() ) {
+			return;
+		}
+
+		// provide the opportunity to Ignore IHAF - both headers and footers via filters
+		if ( apply_filters( 'disable_ihaf', false ) ) {
+			return;
+		}
+
+		// provide the opportunity to Ignore IHAF - footer only via filters
+		if ( 'ihaf_insert_footer' == $setting && apply_filters( 'disable_ihaf_footer', false ) ) {
+			return;
+		}
+
+		// provide the opportunity to Ignore IHAF - header only via filters
+		if ( 'ihaf_insert_header' == $setting && apply_filters( 'disable_ihaf_header', false ) ) {
 			return;
 		}
 

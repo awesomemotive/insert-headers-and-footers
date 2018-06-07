@@ -2,8 +2,8 @@
 Contributors: WPbeginner, smub, deb255
 Tags: code, content, css, facebook pixel, footer, footer code, footer scripts, footers, google analytics, head, header, header code, header scripts, headers, insert, insert code, insert scripts, js, meta, meta tags, scripts, wpmu
 Requires at least: 3.6
-Tested up to: 4.7.4
-Stable tag: 1.4.2
+Tested up to: 4.9.6
+Stable tag: 1.4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,6 +67,14 @@ To learn more about WordPress, you can also visit <a href="http://www.wpbeginner
 
 Yes, you can insert your Google Analytics code in the `Scripts in Header` field.
 
+= Can I use Insert Headers and Footers for Google AdSense? =
+
+Yes, to verify your account or to tag your page for Auto ads, paste the code AdSense gives you, into the Scripts in Header field.
+
+= How to disable Insert Headers and Footers on a specific page? =
+
+You can use one of the three available boolean filters: disable_ihaf, disable_ihaf_footer, disable_ihaf_header and return true value in order to disable printing either on the entire page or specifically in the header or footer of a given page.
+
 == Notes ==
 Insert Headers and Footers is the easiest way to insert code in your WordPress headers and footers.
 
@@ -78,6 +86,10 @@ Thank you
 Syed Balkhi
 
 == Changelog ==
+
+= 1.4.3 =
+* Update FAQs
+* Introduce three new filters: disable_ihaf, disable_ihaf_footer, disable_ihaf_header
 
 = 1.4.2 =
 * Code cleanups
