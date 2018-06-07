@@ -37,8 +37,6 @@ If you find this plugin useful to insert header and footer scripts, please leave
 
 * <a href="http://optinmonster.com/" rel="friend" title="OptinMonster">OptinMonster</a> - Get More Email Subscribers
 * <a href="http://wpforms.com/" rel="friend" title="WPForms">WPForms</a> - Best Contact Form Builder Plugin
-* <a href="http://soliloquywp.com/" rel="friend" title="Soliloquy">Soliloquy</a> - Best WordPress Slider Plugin
-* <a href="http://enviragallery.com/" rel="friend" title="Envira Gallery">Envira Gallery</a> - Best WordPress Gallery Plugin
 * <a href="http://monsterinsights.com/" rel="friend" title="MonsterInsights">MonsterInsights</a> - Best Google Analytics Plugin
 
 To learn more about WordPress, you can also visit <a href="http://www.wpbeginner.com/" rel="friend" title="WPBeginner">WPBeginner</a> for tutorials on topics like:
