@@ -87,7 +87,7 @@ Syed Balkhi
 
 = 1.4.4 =
 * Tested compatibility with WordPress 5.2
-* Updated text-domain in plugin header
+* Updated text-domain standards and in plugin header
 
 = 1.4.3 =
 * Update FAQs
