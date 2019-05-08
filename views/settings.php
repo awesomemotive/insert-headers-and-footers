@@ -1,5 +1,5 @@
 <div class="wrap">
-    <h2><?php echo $this->plugin->displayName; ?> &raquo; <?php _e( 'Settings', $this->plugin->name ); ?></h2>
+    <h2><?php echo $this->plugin->displayName; ?> &raquo; <?php esc_html_e( 'Settings', 'insert-headers-and-footers' ); ?></h2>
 
     <?php
     if ( isset( $this->message ) ) {
@@ -20,23 +20,23 @@
     		<div id="post-body-content">
 				<div id="normal-sortables" class="meta-box-sortables ui-sortable">
 	                <div class="postbox">
-	                    <h3 class="hndle"><?php _e( 'Settings', $this->plugin->name ); ?></h3>
+	                    <h3 class="hndle"><?php esc_html_e( 'Settings', 'insert-headers-and-footers' ); ?></h3>
 
 	                    <div class="inside">
 		                    <form action="options-general.php?page=<?php echo $this->plugin->name; ?>" method="post">
 		                    	<p>
-		                    		<label for="ihaf_insert_header"><strong><?php _e( 'Scripts in Header', $this->plugin->name ); ?></strong></label>
+		                    		<label for="ihaf_insert_header"><strong><?php esc_html_e( 'Scripts in Header', 'insert-headers-and-footers' ); ?></strong></label>
 		                    		<textarea name="ihaf_insert_header" id="ihaf_insert_header" class="widefat" rows="8" style="font-family:Courier New;"><?php echo $this->settings['ihaf_insert_header']; ?></textarea>
-		                    		<?php _e( 'These scripts will be printed in the <code>&lt;head&gt;</code> section.', $this->plugin->name ); ?>
+		                    		<?php esc_html_e( 'These scripts will be printed in the <code>&lt;head&gt;</code> section.', 'insert-headers-and-footers' ); ?>
 		                    	</p>
 		                    	<p>
-		                    		<label for="ihaf_insert_footer"><strong><?php _e( 'Scripts in Footer', $this->plugin->name ); ?></strong></label>
+		                    		<label for="ihaf_insert_footer"><strong><?php esc_html_e( 'Scripts in Footer', 'insert-headers-and-footers' ); ?></strong></label>
 		                    		<textarea name="ihaf_insert_footer" id="ihaf_insert_footer" class="widefat" rows="8" style="font-family:Courier New;"><?php echo $this->settings['ihaf_insert_footer']; ?></textarea>
-		                    		<?php _e( 'These scripts will be printed above the <code>&lt;/body&gt;</code> tag.', $this->plugin->name ); ?>
+		                    		<?php esc_html_e( 'These scripts will be printed above the <code>&lt;/body&gt;</code> tag.', 'insert-headers-and-footers' ); ?>
 		                    	</p>
-		                    	<?php wp_nonce_field( $this->plugin->name, $this->plugin->name.'_nonce' ); ?>
+		                    	<?php wp_nonce_field( $this->plugin->name, $this->plugin->name . '_nonce' ); ?>
 		                    	<p>
-									<input name="submit" type="submit" name="Submit" class="button button-primary" value="<?php _e( 'Save', $this->plugin->name ); ?>" />
+									<input name="submit" type="submit" name="Submit" class="button button-primary" value="<?php esc_html_e( 'Save', 'insert-headers-and-footers' ); ?>" />
 								</p>
 						    </form>
 	                    </div>
