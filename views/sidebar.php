@@ -62,5 +62,11 @@
             </a>
             <?php esc_html_e( ' - Best WordPress Lead Generation Plugin', 'insert-headers-and-footers' ); ?>
         </p>
+        <p>
+            <a href="https://www.seedprod.com/" target="_blank">
+                <?php esc_html_e( 'SeedProd', 'insert-headers-and-footers' ); ?>
+            </a>
+            <?php esc_html_e( ' - Get the best WordPress Coming Soon Page plugin', 'insert-headers-and-footers' ); ?>
+        </p>        
     </div>
 </div>
