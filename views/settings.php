@@ -27,12 +27,24 @@
 		                    	<p>
 		                    		<label for="ihaf_insert_header"><strong><?php esc_html_e( 'Scripts in Header', 'insert-headers-and-footers' ); ?></strong></label>
 		                    		<textarea name="ihaf_insert_header" id="ihaf_insert_header" class="widefat" rows="8" style="font-family:Courier New;"><?php echo $this->settings['ihaf_insert_header']; ?></textarea>
-		                    		<?php esc_html_e( 'These scripts will be printed in the <code>&lt;head&gt;</code> section.', 'insert-headers-and-footers' ); ?>
+									<?php
+										printf(
+											/* translators: %s: The `<head>` tag */
+											esc_html__( 'These scripts will be printed in the %s section.', 'insert-headers-and-footers' ),
+											'<code>&lt;head&gt;</code>'
+										);
+									?>
 		                    	</p>
 		                    	<p>
 		                    		<label for="ihaf_insert_footer"><strong><?php esc_html_e( 'Scripts in Footer', 'insert-headers-and-footers' ); ?></strong></label>
-		                    		<textarea name="ihaf_insert_footer" id="ihaf_insert_footer" class="widefat" rows="8" style="font-family:Courier New;"><?php echo $this->settings['ihaf_insert_footer']; ?></textarea>
-		                    		<?php esc_html_e( 'These scripts will be printed above the <code>&lt;/body&gt;</code> tag.', 'insert-headers-and-footers' ); ?>
+									<textarea name="ihaf_insert_footer" id="ihaf_insert_footer" class="widefat" rows="8" style="font-family:Courier New;"><?php echo $this->settings['ihaf_insert_footer']; ?></textarea>
+									<?php
+										printf(
+											/* translators: %s: The `</body>` tag */
+											esc_html__( 'These scripts will be printed above the %s tag.', 'insert-headers-and-footers' ),
+											'<code>&lt;/body&gt;</code>'
+										);
+									?>
 		                    	</p>
 		                    	<?php wp_nonce_field( $this->plugin->name, $this->plugin->name . '_nonce' ); ?>
 		                    	<p>
