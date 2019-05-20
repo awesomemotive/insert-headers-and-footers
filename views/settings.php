@@ -36,7 +36,7 @@
 		                    	</p>
 		                    	<?php wp_nonce_field( $this->plugin->name, $this->plugin->name . '_nonce' ); ?>
 		                    	<p>
-									<input name="submit" type="submit" name="Submit" class="button button-primary" value="<?php esc_html_e( 'Save', 'insert-headers-and-footers' ); ?>" />
+									<input name="submit" type="submit" name="Submit" class="button button-primary" value="<?php esc_attr_e( 'Save', 'insert-headers-and-footers' ); ?>" />
 								</p>
 						    </form>
 	                    </div>
