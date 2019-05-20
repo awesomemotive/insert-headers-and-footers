@@ -29,23 +29,23 @@ The simple interface of the Insert Headers and Footers plugin gives you one plac
 
 = Credits =
 
-This plugin is created by <a href="https://syedbalkhi.com/" rel="friend" title="Syed Balkhi">Syed Balkhi</a> and the <a href="http://www.wpbeginner.com/" rel="friend" title="WPBeginner">WPBeginner</a> team.
+This plugin is created by <a href="https://syedbalkhi.com/" rel="friend">Syed Balkhi</a> and the <a href="http://www.wpbeginner.com/" rel="friend">WPBeginner</a> team.
 
 = What's Next =
 
 If you find this plugin useful to insert header and footer scripts, please leave a good rating and consider checking out our other projects:
 
-* <a href="http://optinmonster.com/" rel="friend" title="OptinMonster">OptinMonster</a> - Get More Email Subscribers
-* <a href="http://wpforms.com/" rel="friend" title="WPForms">WPForms</a> - Best Contact Form Builder Plugin
-* <a href="http://monsterinsights.com/" rel="friend" title="MonsterInsights">MonsterInsights</a> - Best Google Analytics Plugin
+* <a href="http://optinmonster.com/" rel="friend">OptinMonster</a> - Get More Email Subscribers
+* <a href="http://wpforms.com/" rel="friend">WPForms</a> - Best Contact Form Builder Plugin
+* <a href="http://monsterinsights.com/" rel="friend">MonsterInsights</a> - Best Google Analytics Plugin
 
-To learn more about WordPress, you can also visit <a href="http://www.wpbeginner.com/" rel="friend" title="WPBeginner">WPBeginner</a> for tutorials on topics like:
+To learn more about WordPress, you can also visit <a href="http://www.wpbeginner.com/" rel="friend">WPBeginner</a> for tutorials on topics like:
 
-* <a href="http://www.wpbeginner.com/wordpress-performance-speed/" rel="friend" title="Ultimate Guide to WordPress Speed and Performance">WordPress Speed and Performance</a>
-* <a href="http://www.wpbeginner.com/wordpress-security/" rel="friend" title="Ultimate WordPress Security Guide">WordPress Security</a>
-* <a href="http://www.wpbeginner.com/wordpress-seo/" rel="friend" title="Ultimate WordPress SEO Guide for Beginners">WordPress SEO</a>
+* <a href="http://www.wpbeginner.com/wordpress-performance-speed/" rel="friend">WordPress Speed and Performance</a>
+* <a href="http://www.wpbeginner.com/wordpress-security/" rel="friend">WordPress Security</a>
+* <a href="http://www.wpbeginner.com/wordpress-seo/" rel="friend">WordPress SEO</a>
 
-...and many more <a href="http://www.wpbeginner.com/category/wp-tutorials/" rel="friend" title="WordPress Tutorials">WordPress tutorials</a>.
+...and many more <a href="http://www.wpbeginner.com/category/wp-tutorials/" rel="friend">WordPress tutorials</a>.
 
 == Installation ==
 
