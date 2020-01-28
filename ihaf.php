@@ -55,7 +55,7 @@ class InsertHeadersAndFooters {
         add_action( 'wp_head', array( &$this, 'frontendHeader' ) );
 		add_action( 'wp_footer', array( &$this, 'frontendFooter' ) );
 		if ( function_exists( 'wp_body_open' ) ) {
-			add_action( 'wp_body_open', array( &$this, 'frontendBody' ) );
+			add_action( 'wp_body_open', array( &$this, 'frontendBody' ), 1 );
 		}
 	}
 

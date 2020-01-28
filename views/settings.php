@@ -35,7 +35,7 @@
 										);
 									?>
 		                    	</p>
-								<?php if ( ! function_exists( 'wp_body_open' ) ) : ?>
+								<?php if ( function_exists( 'wp_body_open' ) ) : ?>
 								<p>
 									<label for="ihaf_insert_body"><strong><?php esc_html_e( 'Scripts in Body', 'insert-headers-and-footers' ); ?></strong></label>
 									<textarea name="ihaf_insert_body" id="ihaf_insert_body" class="widefat" rows="8" style="font-family:Courier New;"><?php echo $this->settings['ihaf_insert_body']; ?></textarea>
