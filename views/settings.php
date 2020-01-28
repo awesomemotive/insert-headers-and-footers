@@ -35,13 +35,26 @@
 										);
 									?>
 		                    	</p>
-		                    	<p>
-		                    		<label for="ihaf_insert_footer"><strong><?php esc_html_e( 'Scripts in Footer', 'insert-headers-and-footers' ); ?></strong></label>
+								<?php if ( ! function_exists( 'wp_body_open' ) ) : ?>
+								<p>
+									<label for="ihaf_insert_body"><strong><?php esc_html_e( 'Scripts in Body', 'insert-headers-and-footers' ); ?></strong></label>
+									<textarea name="ihaf_insert_body" id="ihaf_insert_body" class="widefat" rows="8" style="font-family:Courier New;"><?php echo $this->settings['ihaf_insert_body']; ?></textarea>
+									<?php
+										printf(
+											/* translators: %s: The `<head>` tag */
+											esc_html__( 'These scripts will be printed just below the opening %s tag.', 'insert-headers-and-footers' ),
+											'<code>&lt;body&gt;</code>'
+										);
+									?>
+								</p>
+								<?php endif; ?>
+								<p>
+									<label for="ihaf_insert_footer"><strong><?php esc_html_e( 'Scripts in Footer', 'insert-headers-and-footers' ); ?></strong></label>
 									<textarea name="ihaf_insert_footer" id="ihaf_insert_footer" class="widefat" rows="8" style="font-family:Courier New;"><?php echo $this->settings['ihaf_insert_footer']; ?></textarea>
 									<?php
 										printf(
 											/* translators: %s: The `</body>` tag */
-											esc_html__( 'These scripts will be printed above the %s tag.', 'insert-headers-and-footers' ),
+											esc_html__( 'These scripts will be printed above the closing %s tag.', 'insert-headers-and-footers' ),
 											'<code>&lt;/body&gt;</code>'
 										);
 									?>

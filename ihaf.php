@@ -2,7 +2,7 @@
 /**
 * Plugin Name: Insert Headers and Footers
 * Plugin URI: http://www.wpbeginner.com/
-* Version: 1.4.4
+* Version: 1.4.5
 * Author: WPBeginner
 * Author URI: http://www.wpbeginner.com/
 * Description: Allows you to insert code or text in the header or footer of your WordPress blog
@@ -40,60 +40,24 @@ class InsertHeadersAndFooters {
         $this->plugin               = new stdClass;
         $this->plugin->name         = 'insert-headers-and-footers'; // Plugin Folder
         $this->plugin->displayName  = 'Insert Headers and Footers'; // Plugin Name
-        $this->plugin->version      = '1.4.4';
+        $this->plugin->version      = '1.4.5';
         $this->plugin->folder       = plugin_dir_path( __FILE__ );
         $this->plugin->url          = plugin_dir_url( __FILE__ );
         $this->plugin->db_welcome_dismissed_key = $this->plugin->name . '_welcome_dismissed_key';
 
-        // Check if the global wpb_feed_append variable exists. If not, set it.
-        if ( ! array_key_exists( 'wpb_feed_append', $GLOBALS ) ) {
-              $GLOBALS['wpb_feed_append'] = false;
-        }
-
 		// Hooks
 		add_action( 'admin_init', array( &$this, 'registerSettings' ) );
         add_action( 'admin_menu', array( &$this, 'adminPanelsAndMetaBoxes' ) );
-        add_action( 'wp_feed_options', array( &$this, 'dashBoardRss' ), 10, 2 );
         add_action( 'admin_notices', array( &$this, 'dashboardNotices' ) );
         add_action( 'wp_ajax_' . $this->plugin->name . '_dismiss_dashboard_notices', array( &$this, 'dismissDashboardNotices' ) );
 
         // Frontend Hooks
         add_action( 'wp_head', array( &$this, 'frontendHeader' ) );
 		add_action( 'wp_footer', array( &$this, 'frontendFooter' ) );
-
-		// Filters
-		add_filter( 'dashboard_secondary_items', array( &$this, 'dashboardSecondaryItems' ) );
+		if ( function_exists( 'wp_body_open' ) ) {
+			add_action( 'wp_body_open', array( &$this, 'frontendBody' ) );
+		}
 	}
-
-    /**
-     * Number of Secondary feed items to show
-     */
-	function dashboardSecondaryItems() {
-		return 6;
-	}
-
-    /**
-     * Update the planet feed to add the WPB feed
-     */
-    function dashboardRss( $feed, $url ) {
-        // Return early if not on the right page.
-        global $pagenow;
-        if ( 'admin-ajax.php' !== $pagenow ) {
-            return;
-        }
-
-        // Return early if not on the right feed.
-        if ( strpos( $url, 'planet.wordpress.org' ) === false ) {
-            return;
-        }
-
-        // Only move forward if this action hasn't been done already.
-        if ( ! $GLOBALS['wpb_feed_append'] ) {
-            $GLOBALS['wpb_feed_append'] = true;
-            $urls = array( 'http://www.wpbeginner.com/feed/', $url );
-            $feed->set_feed_url( $urls );
-        }
-    }
 
     /**
      * Show relevant notices for the plugin
@@ -126,6 +90,7 @@ class InsertHeadersAndFooters {
 	function registerSettings() {
 		register_setting( $this->plugin->name, 'ihaf_insert_header', 'trim' );
 		register_setting( $this->plugin->name, 'ihaf_insert_footer', 'trim' );
+		register_setting( $this->plugin->name, 'ihaf_insert_body', 'trim' );
 	}
 
 	/**
@@ -161,7 +126,8 @@ class InsertHeadersAndFooters {
 				// so do nothing before saving
 	    		update_option( 'ihaf_insert_header', $_REQUEST['ihaf_insert_header'] );
 	    		update_option( 'ihaf_insert_footer', $_REQUEST['ihaf_insert_footer'] );
-	    		update_option( $this->plugin->db_welcome_dismissed_key, 1 );
+				update_option( 'ihaf_insert_body', isset( $_REQUEST['ihaf_insert_body'] ) ? $_REQUEST['ihaf_insert_body'] : '' );
+				update_option( $this->plugin->db_welcome_dismissed_key, 1 );
 				$this->message = __( 'Settings Saved.', 'insert-headers-and-footers' );
 			}
         }
@@ -170,6 +136,7 @@ class InsertHeadersAndFooters {
         $this->settings = array(
 			'ihaf_insert_header' => esc_html( wp_unslash( get_option( 'ihaf_insert_header' ) ) ),
 			'ihaf_insert_footer' => esc_html( wp_unslash( get_option( 'ihaf_insert_footer' ) ) ),
+			'ihaf_insert_body' => esc_html( wp_unslash( get_option( 'ihaf_insert_body' ) ) ),
         );
 
     	// Load Settings Form
@@ -198,6 +165,13 @@ class InsertHeadersAndFooters {
 	}
 
 	/**
+	* Outputs script / CSS to the frontend below opening body
+	*/
+	function frontendBody() {
+		$this->output( 'ihaf_insert_body' );
+	}
+
+	/**
 	* Outputs the given setting, if conditions are met
 	*
 	* @param string $setting Setting Name
@@ -221,6 +195,11 @@ class InsertHeadersAndFooters {
 
 		// provide the opportunity to Ignore IHAF - header only via filters
 		if ( 'ihaf_insert_header' == $setting && apply_filters( 'disable_ihaf_header', false ) ) {
+			return;
+		}
+
+		// provide the opportunity to Ignore IHAF - below opening body only via filters
+		if ( 'ihaf_insert_body' == $setting && apply_filters( 'disable_ihaf_body', false ) ) {
 			return;
 		}
 
