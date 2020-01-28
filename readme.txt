@@ -72,7 +72,7 @@ Yes, to verify your account or to tag your page for Auto ads, paste the code AdS
 
 = How to disable Insert Headers and Footers on a specific page? =
 
-You can use one of the three available boolean filters: disable_ihaf, disable_ihaf_footer, disable_ihaf_header and return true value in order to disable printing either on the entire page or specifically in the header or footer of a given page.
+You can use one of the three available boolean filters: disable_ihaf, disable_ihaf_footer, disable_ihaf_header, disable_ihaf_body and return true value in order to disable printing either on the entire page or specifically in the header or footer of a given page.
 
 == Notes ==
 Insert Headers and Footers is the easiest way to insert code in your WordPress headers and footers.
