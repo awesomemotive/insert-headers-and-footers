@@ -44,6 +44,7 @@ class InsertHeadersAndFooters {
         $this->plugin->folder       = plugin_dir_path( __FILE__ );
         $this->plugin->url          = plugin_dir_url( __FILE__ );
         $this->plugin->db_welcome_dismissed_key = $this->plugin->name . '_welcome_dismissed_key';
+        $this->body_open_supported	= function_exists( 'wp_body_open' ) && version_compare( get_bloginfo( 'version' ), '5.2' , '>=' );
 
 		// Hooks
 		add_action( 'admin_init', array( &$this, 'registerSettings' ) );
@@ -54,7 +55,7 @@ class InsertHeadersAndFooters {
         // Frontend Hooks
         add_action( 'wp_head', array( &$this, 'frontendHeader' ) );
 		add_action( 'wp_footer', array( &$this, 'frontendFooter' ) );
-		if ( function_exists( 'wp_body_open' ) ) {
+		if ( $this->body_open_supported ) {
 			add_action( 'wp_body_open', array( &$this, 'frontendBody' ), 1 );
 		}
 	}
