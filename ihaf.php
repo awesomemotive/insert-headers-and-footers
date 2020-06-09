@@ -149,6 +149,12 @@ class InsertHeadersAndFooters {
  	 * Enqueue and initialize CodeMirror for the form fields.
  	 */
  	function initCodeMirror() {
+ 		global $pagenow;
+
+ 		if ( ! ( $pagenow == 'options-general.php' && isset( $_GET['page'] ) && $_GET['page'] == 'insert-headers-and-footers' ) ) {
+ 			return;
+ 		}
+
  		// Enqueue code editor and settings for manipulating HTML.
  		$settings = wp_enqueue_code_editor( array( 'type' => 'text/html' ) );
 
