@@ -48,6 +48,7 @@ class InsertHeadersAndFooters {
 
 		// Hooks
 		add_action( 'admin_init', array( &$this, 'registerSettings' ) );
+		add_action( 'admin_enqueue_scripts', array( &$this, 'initCodeMirror' ) );
         add_action( 'admin_menu', array( &$this, 'adminPanelsAndMetaBoxes' ) );
         add_action( 'admin_notices', array( &$this, 'dashboardNotices' ) );
         add_action( 'wp_ajax_' . $this->plugin->name . '_dismiss_dashboard_notices', array( &$this, 'dismissDashboardNotices' ) );
@@ -142,7 +143,28 @@ class InsertHeadersAndFooters {
 
     	// Load Settings Form
         include_once( $this->plugin->folder . '/views/settings.php' );
-    }
+ 	}
+
+ 	/**
+ 	 * Enqueue and initialize CodeMirror for the form fields.
+ 	 */
+ 	function initCodeMirror() {
+ 		// Enqueue code editor and settings for manipulating HTML.
+ 		$settings = wp_enqueue_code_editor( array( 'type' => 'text/html' ) );
+
+ 		// Bail if user disabled CodeMirror.
+ 		if ( false === $settings ) {
+ 			return;
+ 		}
+
+ 		$styles = ".CodeMirror{ border: 1px solid #ccd0d4; }";
+
+ 		wp_add_inline_style(  'code-editor', $styles );
+
+ 		wp_add_inline_script( 'code-editor', sprintf( 'jQuery( function() { wp.codeEditor.initialize( "ihaf_insert_header", %s ); } );', wp_json_encode( $settings ) ) );
+ 		wp_add_inline_script( 'code-editor', sprintf( 'jQuery( function() { wp.codeEditor.initialize( "ihaf_insert_body", %s ); } );', wp_json_encode( $settings ) ) );
+ 		wp_add_inline_script( 'code-editor', sprintf( 'jQuery( function() { wp.codeEditor.initialize( "ihaf_insert_footer", %s ); } );', wp_json_encode( $settings ) ) );
+ 	}
 
     /**
 	* Loads plugin textdomain
