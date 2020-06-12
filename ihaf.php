@@ -149,6 +149,11 @@ class InsertHeadersAndFooters {
  	 * Enqueue and initialize CodeMirror for the form fields.
  	 */
  	function initCodeMirror() {
+ 		// Make sure that we don't fatal error on WP versions before 4.9.
+ 		if ( ! function_exists( 'wp_enqueue_code_editor' ) ) {
+ 			return;
+ 		}
+
  		global $pagenow;
 
  		if ( ! ( $pagenow == 'options-general.php' && isset( $_GET['page'] ) && $_GET['page'] == 'insert-headers-and-footers' ) ) {
@@ -163,6 +168,7 @@ class InsertHeadersAndFooters {
  			return;
  		}
 
+ 		// Custom styles for the form fields.
  		$styles = ".CodeMirror{ border: 1px solid #ccd0d4; }";
 
  		wp_add_inline_style(  'code-editor', $styles );
