@@ -156,7 +156,7 @@ class InsertHeadersAndFooters {
 
  		global $pagenow;
 
- 		if ( ! ( $pagenow == 'options-general.php' && isset( $_GET['page'] ) && $_GET['page'] == 'insert-headers-and-footers' ) ) {
+ 		if ( ! ( $pagenow === 'options-general.php' && isset( $_GET['page'] ) && $_GET['page'] === 'insert-headers-and-footers' ) ) {
  			return;
  		}
 
