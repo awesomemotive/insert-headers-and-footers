@@ -2,9 +2,9 @@
 Contributors: WPbeginner, smub, deb255
 Tags: code, content, css, facebook pixel, footer, footer code, footer scripts, footers, google analytics, head, header, header code, header scripts, headers, insert, insert code, insert scripts, js, meta, meta tags, scripts, wpmu
 Requires at least: 3.6
-Tested up to: 5.4.1
+Tested up to: 5.5.1
 Requires PHP: 5.2
-Stable tag: 1.4.5
+Stable tag: 1.4.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,6 +85,9 @@ Thank you
 Syed Balkhi
 
 == Changelog ==
+
+= 1.4.6 =
+* Tested compatibility with WordPress 5.4.2
 
 = 1.4.5 =
 * Tested compatibility with WordPress 5.3.2
