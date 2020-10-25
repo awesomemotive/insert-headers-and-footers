@@ -22,6 +22,13 @@
 
 	<file>.</file>
 
+	<!-- Compatibility sniffs -->
+	<rule ref="PHPCompatibilityWP"/>
+
+	<!-- Support older version of WP by supporting PHP 5.2+. -->
+	<config name="testVersion" value="5.2-"/>
+
+	<!-- Style sniffs -->
 	<rule ref="WordPress-Core">
 		<!-- Exclude a few naming rules. -->
 		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
