@@ -22,7 +22,12 @@
 
 	<file>.</file>
 
-	<rule ref="WordPress-Core"/>
+	<rule ref="WordPress-Core">
+		<!-- Exclude a few naming rules. -->
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
+		<exclude name="WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid" />
+		<exclude name="WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase" />
+	</rule>
 	<rule ref="WordPress.CodeAnalysis.EmptyStatement"/>
 
 	<!-- Exclude third party code -->
