@@ -68,7 +68,7 @@ class InsertHeadersAndFooters {
 		global $pagenow;
 
 		if ( ! get_option( $this->plugin->db_welcome_dismissed_key ) ) {
-			if ( ! ( $pagenow == 'options-general.php' && isset( $_GET['page'] ) && $_GET['page'] == 'insert-headers-and-footers' ) ) {
+			if ( ! ( 'options-general.php' === $pagenow && isset( $_GET['page'] ) && 'insert-headers-and-footers' === $_GET['page'] ) ) {
 				$setting_page = admin_url( 'options-general.php?page=' . $this->plugin->name );
 				// load the notices view
 				include_once( $this->plugin->folder . '/views/dashboard-notices.php' );
@@ -156,7 +156,7 @@ class InsertHeadersAndFooters {
 
 		global $pagenow;
 
-		if ( ! ( $pagenow === 'options-general.php' && isset( $_GET['page'] ) && $_GET['page'] === 'insert-headers-and-footers' ) ) {
+		if ( ! ( 'options-general.php' === $pagenow && isset( $_GET['page'] ) && 'insert-headers-and-footers' === $_GET['page'] ) ) {
 			return;
 		}
 
@@ -224,17 +224,17 @@ class InsertHeadersAndFooters {
 		}
 
 		// provide the opportunity to Ignore IHAF - footer only via filters
-		if ( 'ihaf_insert_footer' == $setting && apply_filters( 'disable_ihaf_footer', false ) ) {
+		if ( 'ihaf_insert_footer' === $setting && apply_filters( 'disable_ihaf_footer', false ) ) {
 			return;
 		}
 
 		// provide the opportunity to Ignore IHAF - header only via filters
-		if ( 'ihaf_insert_header' == $setting && apply_filters( 'disable_ihaf_header', false ) ) {
+		if ( 'ihaf_insert_header' === $setting && apply_filters( 'disable_ihaf_header', false ) ) {
 			return;
 		}
 
 		// provide the opportunity to Ignore IHAF - below opening body only via filters
-		if ( 'ihaf_insert_body' == $setting && apply_filters( 'disable_ihaf_body', false ) ) {
+		if ( 'ihaf_insert_body' === $setting && apply_filters( 'disable_ihaf_body', false ) ) {
 			return;
 		}
 
@@ -243,7 +243,7 @@ class InsertHeadersAndFooters {
 		if ( empty( $meta ) ) {
 			return;
 		}
-		if ( trim( $meta ) == '' ) {
+		if ( trim( $meta ) === '' ) {
 			return;
 		}
 
