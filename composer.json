@@ -3,9 +3,9 @@
     "description": "WordPress plugin allowing you to add extra scripts to your blog.",
     "type": "wordpress-plugin",
     "require": {
-        "composer/installers": "^1.9"
     },
     "require-dev": {
+        "composer/installers": "^1.9",
         "dealerdirect/phpcodesniffer-composer-installer": "~0.6.0",
         "phpcompatibility/phpcompatibility-wp": "^2.1.0",
         "wp-coding-standards/wpcs": "~2.3.0"
