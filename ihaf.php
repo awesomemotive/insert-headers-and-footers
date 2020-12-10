@@ -35,12 +35,13 @@ class InsertHeadersAndFooters {
 	* Constructor
 	*/
 	public function __construct() {
+		$file_data = get_file_data( __FILE__, array( 'Version' => 'Version' ) );
 
 		// Plugin Details
 		$this->plugin                           = new stdClass;
 		$this->plugin->name                     = 'insert-headers-and-footers'; // Plugin Folder
 		$this->plugin->displayName              = 'Insert Headers and Footers'; // Plugin Name
-		$this->plugin->version                  = '1.4.6';
+		$this->plugin->version                  = $file_data['Version'];
 		$this->plugin->folder                   = plugin_dir_path( __FILE__ );
 		$this->plugin->url                      = plugin_dir_url( __FILE__ );
 		$this->plugin->db_welcome_dismissed_key = $this->plugin->name . '_welcome_dismissed_key';
