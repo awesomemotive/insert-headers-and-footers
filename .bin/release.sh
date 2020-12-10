@@ -34,7 +34,7 @@ fi
 
 if [ ! -z "$(git status --porcelain)" ]; then
 	echo "Git is dirty."
-	# exit
+	exit 1
 fi
 
 # Check version in readme.txt is the same as plugin file after translating both to unix line breaks to work around grep's failure to identify mac line breaks
@@ -90,7 +90,7 @@ fi
 
 echo
 echo "Removing dot files from root directory."
-rm .*
+rm -rf .*
 
 echo "Removing xml files from root directory."
 rm *.xml
@@ -99,7 +99,17 @@ rm *.xml.dist
 echo "Removing webpack and remaining config files from root directory."
 rm webpack.config.js postcss.config.js
 
+echo
+echo "Initial SVN status"
+svn status
 
 echo
-echo "CURRENT SVN STATUS"
+echo
+echo "Preparing commit ..."
+svn status | grep -v "^.[ \t]*\..*" | grep "^?" | awk '{print $2}' | xargs svn add
+svn status | grep -v "^.[ \t]*\..*" | grep "^\!" | awk '{print $2}' | xargs svn rm
+
+echo
+echo "Now ready to commit trunk ..."
 svn status
+
