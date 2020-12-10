@@ -86,6 +86,9 @@ Syed Balkhi
 
 == Changelog ==
 
+= 1.5.0 =
+* New: Code editors now use CodeMirror for syntax highlighting.
+
 = 1.4.6 =
 * Tested compatibility with WordPress 5.4.2
 
@@ -131,7 +134,7 @@ Syed Balkhi
 * cleaned up code
 
 = 1.1 =
-* fixed unecessary CSS loading
+* fixed unnecessary CSS loading
 
 = 1.0 =
 * Initial version
