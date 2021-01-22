@@ -1,10 +1,10 @@
 === Insert Headers and Footers ===
-Contributors: WPbeginner, smub, deb255
+Contributors: WPbeginner, smub, deb255, MeMattStone
 Tags: code, content, css, facebook pixel, footer, footer code, footer scripts, footers, google analytics, head, header, header code, header scripts, headers, insert, insert code, insert scripts, js, meta, meta tags, scripts, wpmu
 Requires at least: 3.6
 Tested up to: 5.6
 Requires PHP: 5.2
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,7 @@ The simple interface of the Insert Headers and Footers plugin gives you one plac
 * Add <strong>custom CSS</strong> across themes
 * Insert <strong>Facebook pixel code</strong>
 * Insert any code or script, including HTML and Javascript
+* Support for Elementor Header and Footer templates
 
 = Credits =
 
@@ -85,6 +86,9 @@ Thank you
 Syed Balkhi
 
 == Changelog ==
+
+= 1.5.1 =
+* New: Support for Elementor Header and Footer templates which don't load the `wp_body_open` action
 
 = 1.5.0 =
 * New: Code editors now use CodeMirror for syntax highlighting.
