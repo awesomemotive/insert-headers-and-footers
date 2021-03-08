@@ -3,10 +3,13 @@
 * Plugin Name: Insert Headers and Footers
 * Plugin URI: http://www.wpbeginner.com/
 * Version: 1.5.0
+* Requires at least: 3.6
+* Requires PHP: 5.2
+* Tested up to: 5.6
 * Author: WPBeginner
 * Author URI: http://www.wpbeginner.com/
 * Description: Allows you to insert code or text in the header or footer of your WordPress blog
-* License: GPL2
+* License: GPLv2 or later
 * Text Domain: insert-headers-and-footers
 * Domain Path: languages
 */
