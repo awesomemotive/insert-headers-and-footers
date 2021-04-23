@@ -71,7 +71,10 @@ class InsertHeadersAndFooters {
 	function dashboardNotices() {
 		global $pagenow;
 
-		if ( ! get_option( $this->plugin->db_welcome_dismissed_key ) ) {
+		if (
+			! get_option( $this->plugin->db_welcome_dismissed_key )
+			&& current_user_can( 'manage_options' )
+		) {
 			if ( ! ( 'options-general.php' === $pagenow && isset( $_GET['page'] ) && 'insert-headers-and-footers' === $_GET['page'] ) ) {
 				$setting_page = admin_url( 'options-general.php?page=' . $this->plugin->name );
 				// load the notices view
