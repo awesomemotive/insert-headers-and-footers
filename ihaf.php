@@ -111,16 +111,28 @@ class InsertHeadersAndFooters {
 	* Save POSTed data from the Administration Panel into a WordPress option
 	*/
 	function adminPanel() {
-		// only admin user can access this page
-		if ( ! current_user_can( 'administrator' ) ) {
-			echo '<p>' . __( 'Sorry, you are not allowed to access this page.', 'insert-headers-and-footers' ) . '</p>';
-			return;
+		/*
+		 * Only users with manage_options can access this page.
+		 *
+		 * The capability included in add_settings_page() means WP should deal
+		 * with this automatically but it never hurts to double check.
+		 */
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( __( 'Sorry, you are not allowed to access this page.', 'insert-headers-and-footers' ) );
+		}
+
+		// only users with `unfiltered_html` can edit scripts.
+		if ( ! current_user_can( 'unfiltered_html' ) ) {
+			$this->errorMessage = '<p>' . __( 'Sorry, only have read-only access to this page. Ask your administrator for assistance editing.', 'insert-headers-and-footers' ) . '</p>';
 		}
 
 		// Save Settings
 		if ( isset( $_REQUEST['submit'] ) ) {
-			// Check nonce
-			if ( ! isset( $_REQUEST[ $this->plugin->name . '_nonce' ] ) ) {
+			// Check permissions and nonce.
+			if ( ! current_user_can( 'unfiltered_html' ) ) {
+				// Can not edit scripts.
+				wp_die( __( 'Sorry, you are not allowed to edit this page.' ) );
+			} elseif ( ! isset( $_REQUEST[ $this->plugin->name . '_nonce' ] ) ) {
 				// Missing nonce
 				$this->errorMessage = __( 'nonce field is missing. Settings NOT saved.', 'insert-headers-and-footers' );
 			} elseif ( ! wp_verify_nonce( $_REQUEST[ $this->plugin->name . '_nonce' ], $this->plugin->name ) ) {
@@ -164,8 +176,14 @@ class InsertHeadersAndFooters {
 			return;
 		}
 
+		$editor_args = array( 'type' => 'text/html' );
+
+		if ( ! current_user_can( 'unfiltered_html' ) || ! current_user_can( 'manage_options' ) ) {
+			$editor_args['codemirror']['readOnly'] = true;
+		}
+
 		// Enqueue code editor and settings for manipulating HTML.
-		$settings = wp_enqueue_code_editor( array( 'type' => 'text/html' ) );
+		$settings = wp_enqueue_code_editor( $editor_args );
 
 		// Bail if user disabled CodeMirror.
 		if ( false === $settings ) {
