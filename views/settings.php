@@ -26,7 +26,7 @@
 							<form action="options-general.php?page=<?php echo $this->plugin->name; ?>" method="post">
 								<p>
 									<label for="ihaf_insert_header"><strong><?php esc_html_e( 'Scripts in Header', 'insert-headers-and-footers' ); ?></strong></label>
-									<textarea name="ihaf_insert_header" id="ihaf_insert_header" class="widefat" rows="8" style="font-family:Courier New;"><?php echo $this->settings['ihaf_insert_header']; ?></textarea>
+									<textarea name="ihaf_insert_header" id="ihaf_insert_header" class="widefat" rows="8" style="font-family:Courier New;" <?php echo ( ! current_user_can( 'unfiltered_html' ) ) ? ' disabled="disabled" ' : ''; ?>><?php echo $this->settings['ihaf_insert_header']; ?></textarea>
 									<?php
 									printf(
 										/* translators: %s: The `<head>` tag */
@@ -38,7 +38,7 @@
 								<?php if ( $this->body_open_supported ) : ?>
 								<p>
 									<label for="ihaf_insert_body"><strong><?php esc_html_e( 'Scripts in Body', 'insert-headers-and-footers' ); ?></strong></label>
-									<textarea name="ihaf_insert_body" id="ihaf_insert_body" class="widefat" rows="8" style="font-family:Courier New;"><?php echo $this->settings['ihaf_insert_body']; ?></textarea>
+									<textarea name="ihaf_insert_body" id="ihaf_insert_body" class="widefat" rows="8" style="font-family:Courier New;" <?php echo ( ! current_user_can( 'unfiltered_html' ) ) ? ' disabled="disabled" ' : ''; ?>><?php echo $this->settings['ihaf_insert_body']; ?></textarea>
 									<?php
 									printf(
 										/* translators: %s: The `<head>` tag */
@@ -50,7 +50,7 @@
 								<?php endif; ?>
 								<p>
 									<label for="ihaf_insert_footer"><strong><?php esc_html_e( 'Scripts in Footer', 'insert-headers-and-footers' ); ?></strong></label>
-									<textarea name="ihaf_insert_footer" id="ihaf_insert_footer" class="widefat" rows="8" style="font-family:Courier New;"><?php echo $this->settings['ihaf_insert_footer']; ?></textarea>
+									<textarea name="ihaf_insert_footer" id="ihaf_insert_footer" class="widefat" rows="8" style="font-family:Courier New;" <?php echo ( ! current_user_can( 'unfiltered_html' ) ) ? ' disabled="disabled" ' : ''; ?>><?php echo $this->settings['ihaf_insert_footer']; ?></textarea>
 									<?php
 									printf(
 										/* translators: %s: The `</body>` tag */
@@ -59,10 +59,12 @@
 									);
 									?>
 								</p>
-								<?php wp_nonce_field( $this->plugin->name, $this->plugin->name . '_nonce' ); ?>
-								<p>
-									<input name="submit" type="submit" name="Submit" class="button button-primary" value="<?php esc_attr_e( 'Save', 'insert-headers-and-footers' ); ?>" />
-								</p>
+								<?php if ( current_user_can( 'unfiltered_html' ) ) : ?>
+									<?php wp_nonce_field( $this->plugin->name, $this->plugin->name . '_nonce' ); ?>
+									<p>
+										<input name="submit" type="submit" name="Submit" class="button button-primary" value="<?php esc_attr_e( 'Save', 'insert-headers-and-footers' ); ?>" />
+									</p>
+								<?php endif; ?>
 							</form>
 						</div>
 					</div>
