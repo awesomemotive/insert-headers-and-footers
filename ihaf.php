@@ -204,13 +204,6 @@ class InsertHeadersAndFooters {
 	}
 
 	/**
-	* Loads plugin textdomain
-	*/
-	function loadLanguageFiles() {
-		load_plugin_textdomain( 'insert-headers-and-footers', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-	}
-
-	/**
 	* Outputs script / CSS to the frontend header
 	*/
 	function frontendHeader() {
