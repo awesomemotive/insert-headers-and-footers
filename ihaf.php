@@ -10,8 +10,6 @@
 * Author URI: http://www.wpbeginner.com/
 * Description: Allows you to insert code or text in the header or footer of your WordPress blog
 * License: GPLv2 or later
-* Text Domain: insert-headers-and-footers
-* Domain Path: languages
 */
 
 /*  Copyright 2019 WPBeginner
