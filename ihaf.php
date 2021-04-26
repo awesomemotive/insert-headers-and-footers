@@ -2,8 +2,8 @@
 /**
 * Plugin Name: Insert Headers and Footers
 * Plugin URI: http://www.wpbeginner.com/
-* Version: 1.5.0
-* Requires at least: 3.6
+* Version: 1.6.0
+* Requires at least: 4.6
 * Requires PHP: 5.2
 * Tested up to: 5.7
 * Author: WPBeginner
