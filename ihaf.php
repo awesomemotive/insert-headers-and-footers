@@ -134,7 +134,7 @@ class InsertHeadersAndFooters {
 			// Check permissions and nonce.
 			if ( ! current_user_can( 'unfiltered_html' ) ) {
 				// Can not edit scripts.
-				wp_die( __( 'Sorry, you are not allowed to edit this page.' ) );
+				wp_die( __( 'Sorry, you are not allowed to edit this page.', 'insert-headers-and-footers' ) );
 			} elseif ( ! isset( $_REQUEST[ $this->plugin->name . '_nonce' ] ) ) {
 				// Missing nonce
 				$this->errorMessage = __( 'nonce field is missing. Settings NOT saved.', 'insert-headers-and-footers' );
