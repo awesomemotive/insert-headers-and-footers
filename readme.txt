@@ -1,4 +1,4 @@
-=== Insert Headers and Footers ===
+=== Insert Headers and Footers by WPBeginner ===
 Contributors: WPbeginner, smub, deb255
 Tags: code, content, css, facebook pixel, footer, footer code, footer scripts, footers, google analytics, head, header, header code, header scripts, headers, insert, insert code, insert scripts, js, meta, meta tags, scripts, wpmu
 Requires at least: 4.6
