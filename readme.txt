@@ -2,7 +2,7 @@
 Contributors: WPbeginner, smub, deb255
 Tags: code, content, css, facebook pixel, footer, footer code, footer scripts, footers, google analytics, head, header, header code, header scripts, headers, insert, insert code, insert scripts, js, meta, meta tags, scripts, wpmu
 Requires at least: 4.6
-Tested up to: 5.7
+Tested up to: 5.8
 Requires PHP: 5.2
 Stable tag: 1.6.0
 License: GPLv2 or later
