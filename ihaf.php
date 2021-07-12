@@ -5,7 +5,7 @@
 * Version: 1.6.0
 * Requires at least: 4.6
 * Requires PHP: 5.2
-* Tested up to: 5.7
+* Tested up to: 5.8
 * Author: WPBeginner
 * Author URI: http://www.wpbeginner.com/
 * Description: Allows you to insert code or text in the header or footer of your WordPress blog
