@@ -1,5 +1,6 @@
 === Insert Headers and Footers by WPBeginner ===
-Contributors: WPbeginner, smub, deb255
+Contributors: WPbeginner, smub, deb255, MeMattStone
+=======
 Tags: code, content, css, facebook pixel, footer, footer code, footer scripts, footers, google analytics, head, header, header code, header scripts, headers, insert, insert code, insert scripts, js, meta, meta tags, scripts, wpmu
 Requires at least: 4.6
 Tested up to: 5.8
@@ -27,6 +28,7 @@ The simple interface of the Insert Headers and Footers plugin gives you one plac
 * Add <strong>custom CSS</strong> across themes
 * Insert <strong>Facebook pixel code</strong>
 * Insert any code or script, including HTML and Javascript
+* Support for Elementor Header and Footer templates
 
 = Credits =
 
@@ -85,6 +87,9 @@ Thank you
 Syed Balkhi
 
 == Changelog ==
+
+= 1.6.1 =
+* New: Support for Elementor Header and Footer templates which don't load the `wp_body_open` action
 
 = 1.6.0 =
 * Fix: Only show settings CTA to users able to visit the settings page.

@@ -47,6 +47,7 @@ class InsertHeadersAndFooters {
 		$this->plugin->url                      = plugin_dir_url( __FILE__ );
 		$this->plugin->db_welcome_dismissed_key = $this->plugin->name . '_welcome_dismissed_key';
 		$this->body_open_supported              = function_exists( 'wp_body_open' ) && version_compare( get_bloginfo( 'version' ), '5.2', '>=' );
+		$this->elementor_supported				= is_plugin_active( 'elementor/elementor.php' );
 
 		// Hooks
 		add_action( 'admin_init', array( &$this, 'registerSettings' ) );
@@ -60,6 +61,9 @@ class InsertHeadersAndFooters {
 		add_action( 'wp_footer', array( &$this, 'frontendFooter' ) );
 		if ( $this->body_open_supported ) {
 			add_action( 'wp_body_open', array( &$this, 'frontendBody' ), 1 );
+		}
+		if ( $this->elementor_supported ) {
+			add_action( 'elementor/page_templates/header-footer/before_content', array( &$this, 'frontendBody' ), );	
 		}
 	}
 
