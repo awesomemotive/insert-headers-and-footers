@@ -6,16 +6,18 @@
 # main config
 PLUGINSLUG="insert-headers-and-footers"
 CURRENTDIR=`pwd`
-MAINFILE="ihaf.php" # this should be the name of your main php file in the wordpress plugin
+MAIN_PHP_FILE="ihaf.php" # this should be the name of your main php file in the wordpress plugin
+README_FILE="readme.txt"
 SKIP_NPM=false
 SKIP_COMPOSER=true
+HEADERS=("Requires at least" "Tested up to" "License" "Requires PHP")
 
 # git config
 GITPATH="$CURRENTDIR/" # this file should be in the base of your git repository
 
 # svn config
 TMPPATH="$GITPATH/.tmp-svn" # path to a temp SVN repo. No trailing slash required and don't add trunk.
-SVNURL="http://plugins.svn.wordpress.org/$PLUGINSLUG/" # Remote SVN repo on wordpress.org, with trailing slash
+SVNURL="https://plugins.svn.wordpress.org/$PLUGINSLUG/" # Remote SVN repo on wordpress.org, with trailing slash
 SVNUSER="peterwilsoncc" # your svn username
 
 # Let's begin...
@@ -34,16 +36,33 @@ fi
 
 if [ ! -z "$(git status --porcelain)" ]; then
 	echo "Git is dirty."
+	# exit 1
+fi
+
+# Only exit once all checks are complete.
+EXIT_WITH_ONE=0
+for HEADER in "${HEADERS[@]}"; do
+	RM_VALUE=`grep "^[ 	\*]*${HEADER}[ 	\*]*:" ${README_FILE} | awk -F' ' '{print $NF}'`
+	PHP_VALUE=`grep "^[ 	\*]*${HEADER}[ 	\*]*:" ${MAIN_PHP_FILE} | awk -F' ' '{print $NF}'`
+	echo "Header: ${HEADER}"
+	echo "readme file: ${RM_VALUE}"
+	echo "php file: ${PHP_VALUE}"
+	echo
+	if [ "$RM_VALUE" != "$PHP_VALUE" ]; then
+		EXIT_WITH_ONE=1
+	fi;
+done;
+if [ $EXIT_WITH_ONE == 1 ]; then
 	exit 1
 fi
 
 # Check version in readme.txt is the same as plugin file after translating both to unix line breaks to work around grep's failure to identify mac line breaks
 NEWVERSION1=`grep "^Stable tag:" $GITPATH/readme.txt | awk -F' ' '{print $NF}'`
 echo "readme.txt version: $NEWVERSION1"
-NEWVERSION2=`grep "^[ \t\*]*Version[ \t]*:[ \t]*" $MAINFILE | awk -F' ' '{print $NF}'`
-echo "$MAINFILE version: $NEWVERSION2"
+NEWVERSION2=`grep "^[ \t\*]*Version[ \t]*:[ \t]*" $MAIN_PHP_FILE | awk -F' ' '{print $NF}'`
+echo "$MAIN_PHP_FILE version: $NEWVERSION2"
 
-if [ "$NEWVERSION1" != "$NEWVERSION2" ]; then echo "Version in readme.txt & $MAINFILE don't match. Exiting...."; exit 1; fi
+if [ "$NEWVERSION1" != "$NEWVERSION2" ]; then echo "Version in readme.txt & $MAIN_PHP_FILE don't match. Exiting...."; exit 1; fi
 
 mkdir -p "$TMPPATH/svn-checkout";
 

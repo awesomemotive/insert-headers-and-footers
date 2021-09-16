@@ -1,14 +1,15 @@
 <?php
 /**
-* Plugin Name: Insert Headers and Footers
+* Plugin Name: Insert Headers and Footers by WPBeginner
 * Plugin URI: http://www.wpbeginner.com/
-* Version: 1.5.0
+* Version: 1.6.0
+* Requires at least: 4.6
+* Requires PHP: 5.2
+* Tested up to: 5.8
 * Author: WPBeginner
 * Author URI: http://www.wpbeginner.com/
 * Description: Allows you to insert code or text in the header or footer of your WordPress blog
-* License: GPL2
-* Text Domain: insert-headers-and-footers
-* Domain Path: languages
+* License: GPLv2 or later
 */
 
 /*  Copyright 2019 WPBeginner
@@ -72,7 +73,10 @@ class InsertHeadersAndFooters {
 	function dashboardNotices() {
 		global $pagenow;
 
-		if ( ! get_option( $this->plugin->db_welcome_dismissed_key ) ) {
+		if (
+			! get_option( $this->plugin->db_welcome_dismissed_key )
+			&& current_user_can( 'manage_options' )
+		) {
 			if ( ! ( 'options-general.php' === $pagenow && isset( $_GET['page'] ) && 'insert-headers-and-footers' === $_GET['page'] ) ) {
 				$setting_page = admin_url( 'options-general.php?page=' . $this->plugin->name );
 				// load the notices view
@@ -112,16 +116,28 @@ class InsertHeadersAndFooters {
 	* Save POSTed data from the Administration Panel into a WordPress option
 	*/
 	function adminPanel() {
-		// only admin user can access this page
-		if ( ! current_user_can( 'administrator' ) ) {
-			echo '<p>' . __( 'Sorry, you are not allowed to access this page.', 'insert-headers-and-footers' ) . '</p>';
-			return;
+		/*
+		 * Only users with manage_options can access this page.
+		 *
+		 * The capability included in add_settings_page() means WP should deal
+		 * with this automatically but it never hurts to double check.
+		 */
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( __( 'Sorry, you are not allowed to access this page.', 'insert-headers-and-footers' ) );
+		}
+
+		// only users with `unfiltered_html` can edit scripts.
+		if ( ! current_user_can( 'unfiltered_html' ) ) {
+			$this->errorMessage = '<p>' . __( 'Sorry, only have read-only access to this page. Ask your administrator for assistance editing.', 'insert-headers-and-footers' ) . '</p>';
 		}
 
 		// Save Settings
 		if ( isset( $_REQUEST['submit'] ) ) {
-			// Check nonce
-			if ( ! isset( $_REQUEST[ $this->plugin->name . '_nonce' ] ) ) {
+			// Check permissions and nonce.
+			if ( ! current_user_can( 'unfiltered_html' ) ) {
+				// Can not edit scripts.
+				wp_die( __( 'Sorry, you are not allowed to edit this page.', 'insert-headers-and-footers' ) );
+			} elseif ( ! isset( $_REQUEST[ $this->plugin->name . '_nonce' ] ) ) {
 				// Missing nonce
 				$this->errorMessage = __( 'nonce field is missing. Settings NOT saved.', 'insert-headers-and-footers' );
 			} elseif ( ! wp_verify_nonce( $_REQUEST[ $this->plugin->name . '_nonce' ], $this->plugin->name ) ) {
@@ -165,8 +181,14 @@ class InsertHeadersAndFooters {
 			return;
 		}
 
+		$editor_args = array( 'type' => 'text/html' );
+
+		if ( ! current_user_can( 'unfiltered_html' ) || ! current_user_can( 'manage_options' ) ) {
+			$editor_args['codemirror']['readOnly'] = true;
+		}
+
 		// Enqueue code editor and settings for manipulating HTML.
-		$settings = wp_enqueue_code_editor( array( 'type' => 'text/html' ) );
+		$settings = wp_enqueue_code_editor( $editor_args );
 
 		// Bail if user disabled CodeMirror.
 		if ( false === $settings ) {
@@ -181,13 +203,6 @@ class InsertHeadersAndFooters {
 		wp_add_inline_script( 'code-editor', sprintf( 'jQuery( function() { wp.codeEditor.initialize( "ihaf_insert_header", %s ); } );', wp_json_encode( $settings ) ) );
 		wp_add_inline_script( 'code-editor', sprintf( 'jQuery( function() { wp.codeEditor.initialize( "ihaf_insert_body", %s ); } );', wp_json_encode( $settings ) ) );
 		wp_add_inline_script( 'code-editor', sprintf( 'jQuery( function() { wp.codeEditor.initialize( "ihaf_insert_footer", %s ); } );', wp_json_encode( $settings ) ) );
-	}
-
-	/**
-	* Loads plugin textdomain
-	*/
-	function loadLanguageFiles() {
-		load_plugin_textdomain( 'insert-headers-and-footers', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 
 	/**

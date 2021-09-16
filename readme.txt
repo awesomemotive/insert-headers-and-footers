@@ -1,10 +1,11 @@
-=== Insert Headers and Footers ===
+=== Insert Headers and Footers by WPBeginner ===
 Contributors: WPbeginner, smub, deb255, MeMattStone
+=======
 Tags: code, content, css, facebook pixel, footer, footer code, footer scripts, footers, google analytics, head, header, header code, header scripts, headers, insert, insert code, insert scripts, js, meta, meta tags, scripts, wpmu
-Requires at least: 3.6
-Tested up to: 5.6
+Requires at least: 4.6
+Tested up to: 5.8
 Requires PHP: 5.2
-Stable tag: 1.5.1
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,7 +56,7 @@ To learn more about WordPress, you can also visit <a href="http://www.wpbeginner
 2. Activate Insert Headers and Footers through the `Plugins` menu in WordPress.
 3. Insert code in your header or footer by going to the `Settings > Insert Headers and Footers` menu.
 
-[youtube https://www.youtube.com/watch?v=AXM1QgMODW0]
+[youtube https://www.youtube.com/watch?v=QXbrdVjWaME]
 
 == Screenshots ==
 
@@ -87,8 +88,12 @@ Syed Balkhi
 
 == Changelog ==
 
-= 1.5.1 =
+= 1.6.1 =
 * New: Support for Elementor Header and Footer templates which don't load the `wp_body_open` action
+
+= 1.6.0 =
+* Fix: Only show settings CTA to users able to visit the settings page.
+* Enhancement: Improve settings page user experience on heavily customized WordPress installs.
 
 = 1.5.0 =
 * New: Code editors now use CodeMirror for syntax highlighting.
