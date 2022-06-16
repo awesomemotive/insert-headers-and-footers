@@ -25,8 +25,8 @@ The simple interface of the Insert Headers and Footers plugin gives you one plac
 * Insert header code and/or footer code
 * Add <strong>Google Analytics</strong> code to any theme
 * Add <strong>custom CSS</strong> across themes
-* Insert <strong>Facebook pixel code</strong>
-* Insert any code or script, including HTML and Javascript
+* Insert <strong>Facebook Pixel code</strong>
+* Insert any code or script, including HTML and JavaScript
 
 = Credits =
 
