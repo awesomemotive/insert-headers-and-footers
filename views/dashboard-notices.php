@@ -7,12 +7,15 @@
 	<p>
 		<?php
 		printf(
-			/* translators: %s: Name of this plugin */
-			__( 'Thank you for installing %1$s!', 'insert-headers-and-footers' ),
-			$this->plugin->displayName
+			/* translators: %1$s: Name of this plugin %2$s: Click here */
+			esc_html__( 'Thank you for installing %1$s! %2$s to configure the plugin.', 'insert-headers-and-footers' ),
+			$this->plugin->displayName,
+			sprintf(
+				'<a href="'. $setting_page .'">%s</a>',
+				esc_html__( 'Click here', 'insert-headers-and-footers' )
+			)
 		);
 		?>
-		<a href="<?php echo $setting_page; ?>"><?php esc_html_e( 'Click here', 'insert-headers-and-footers' ); ?></a> <?php esc_html_e( 'to configure the plugin.', 'insert-headers-and-footers' ); ?>
 	</p>
 </div>
 <script type="text/javascript">
